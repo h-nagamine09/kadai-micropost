@@ -9,6 +9,8 @@ class UsersController < ApplicationController
   def show
     # .findでidを取得
     @user = User.find(params[:id])
+    @microposts = @user.microposts.order('created_at DESC').page(params[:page])
+    counts(@user)
   end
 
   def new
@@ -18,7 +20,7 @@ class UsersController < ApplicationController
 
   def create
     @user = User.new(user_params)
-    
+    #ユーザーの登録
     if @user.save!
       flash[:success] = 'ユーザを登録しました'
       redirect_to @user
