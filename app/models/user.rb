@@ -44,6 +44,12 @@ class User < ApplicationRecord
     # 含まれている場合はtrueを返し、含まれていない場合はfalseを返す
     self.followings.include?(other_user)
   end
+  
+  def feed_microposts
+    # UserがフォローしているUserのidの配列を取得。さらに自分自身のself.idもデータ型を合わせるために[self.id]と配列変換して追加
+    Micropost.where(user_id: self.following_ids + [self.id])
+    # Micropost.where(user_id: フォローユーザ + 自分自身)
+  end
 end
 
 
