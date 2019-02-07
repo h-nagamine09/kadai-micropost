@@ -1,22 +1,30 @@
+<!--ログインができた場合に表示されるトップページ-->
 <% if logged_in? %>
  <div class="row">
+   <!--aside内はmicropostの投稿フォーム-->
    <aside class="col-md-4">
+     <!--投稿ページ :contentの値を取得-->
      <%= form_for(@micropost) do |f| %>
      <div class="form-group">
        <%= f.text_area :content, class: 'form_control', rows: 5 %>
      </div>
+     <!--投稿ボタン-->
      <%= f.submit 'Post',class:'btn btn-primary brn-block' %>
      <% end %>
    </aside>
    <div class="col-xs-8">
+     <!--app/views/microposts/microposts.html.erbをrenderで読み込む処理-->
      <%= render 'microposts/microposts', microposts: @microposts %>
    </div>
  </div>
+ <!--ログインされていない or ログインができなかった場合に表示されるトップページ-->
  <% else %>
 <div class="center jumbotron">
   <div class="text-center">
     <h1>Welcome to the Microposts</h1>
+    <!--signupnowボタンを実装-->
     <%= link_to 'Sign up now!' , signup_path, class: 'btn btn-lg btn-primary' %>
   </div>
 </div>
  <% end %>
+ 

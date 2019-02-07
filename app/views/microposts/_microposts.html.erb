@@ -6,14 +6,15 @@
       </div>
       <div class="media-body">
         <div>
-          <%= link_to micropost.user.name,user_path(micropost.user) %> <span class="text-muted">posted at <%= micropost.created_at %></span>
+          <%= link_to micropost.user.name, user_path(micropost.user) %> <span class="text-muted">posted at <%= micropost.created_at %></span>
         </div>
         <div>
             <p><%= micropost.content %></p>
         </div>
         <div>
           <% if current_user == micropost.user %>
-          <%= link_to "Delete",micropost, method: :delete, data: {confirm: "You Sure?"},class: 'btn btn-danger btn-xs' %>
+          <!--削除ボタン-->
+            <%= link_to "Delete",micropost, method: :delete, data: {confirm: "You Sure?"},class: 'btn btn-danger btn-xs' %>
           <% end %>
         </div>
       </div>
@@ -21,3 +22,5 @@
      <% end %>
       <%= paginate microposts %>
 </ul>
+
+<!--micropostの共通のView パーシャル-->

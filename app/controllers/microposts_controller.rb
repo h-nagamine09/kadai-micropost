@@ -1,6 +1,7 @@
-class MicropostsController < ApplicationController
+class MicropostsController < ApplicationController #メッセージ投稿機能
+# before_actionでログインが必須になる
   before_action :require_user_logged_in
-  #Before_actionでログインが必須になる
+# destroyアクションが実行される前にcorrect_userが実行される
   before_action :correct_user,only: [:destroy]
   
   def create
@@ -27,9 +28,13 @@ class MicropostsController < ApplicationController
     params.require(:micropost).permit(:content)
   end 
   
+  # correct_userは削除しようとしているMicropostが本当にログインユーザが所有しているものなのかを確認する処理
   def correct_user
+    # ログインユーザー(current_user)が持つmicropost限定で検索。見つかればなにもしない
     @micropost = current_user.microposts.find_by(id: params[:id])
+    # 見つからなかった場合はnilを代入し、unlessによって実行される
     unless @micropost
+    # トップページにリダイレクト
       redirect_to root_url
     end 
   end 

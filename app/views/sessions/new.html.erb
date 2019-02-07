@@ -7,19 +7,20 @@
    <div class="col-md-6 col-md-offset-3">
      <%= form_for(:session,url: login_path) do |f| %>
      
+     <!--ログインするためのEmail(ID)入力欄 :emailの値を取得-->
       <div class="form-group">
         <%= f.label :email, 'Email' %>
         <%= f.email_field :email,class: 'form-control' %>
       </div>
-      
+      <!--パスワードの入力欄 :passwordの値を取得-->
       <div class="form-group">
         <%= f.label :password, 'Password' %>
         <%= f.password_field :password, class: 'form-control' %>
        </div>
-       
-       <%= f.submit 'Log in', class: 'btn btn-primary btn-block' %>
-      <% end %>
-      
+       <!--入力後のログインボタン-->
+         <%= f.submit 'Log in', class: 'btn btn-primary btn-block' %>
+         <% end %>
+      <!--ログインアカウントが作成されていない場合のsignupページに飛ぶリンク-->
       <p>New user? <%= link_to 'Sign up now!',signup_path %></p>
     </div>
   </div>
