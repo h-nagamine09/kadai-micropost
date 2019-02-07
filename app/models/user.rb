@@ -19,7 +19,7 @@ class User < ApplicationRecord
   # 多対多の図の左半分にいるUserからフォローされているという関係への参照(自分をフォローしているUserへの参照)
   has_many :reverses_of_relationship, class_name: 'Relationship',foreign_key: 'follow_id'
   # 自分をフォローしているUser達を取得
-  has_many :followers, through: :reverses_of_relationships, source: :user
+  has_many :followers, through: :reverses_of_relationship, source: :user
   
   # 中間テーブルを経由して相手の情報を取得できるようにするためには'through'を使用する
   

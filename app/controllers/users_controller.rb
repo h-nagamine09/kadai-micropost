@@ -3,7 +3,7 @@ class UsersController < ApplicationController
  before_action :require_user_logged_in,only: [:index, :show, :followings, :followers]
  
   def index
-    #.allでDB一覧を取得　全ユーザー一覧　ページネーションを適用させるために.page(params[:page])をつけてる
+    #.allでDB一覧を取得全ユーザー一覧 ページネーションを適用させるために.page(params[:page])をつけてる
     @users = User.all.page(params[:page])
   end
 
@@ -29,24 +29,23 @@ class UsersController < ApplicationController
     else
       #登録できなかった場合'ユーザの登録に失敗しました'の表示とnew.htmlに飛ぶ
       flash.now[:danger] = 'ユーザの登録に失敗しました'
-    　render :new
-      ()
+      render :new
     end
   end
   
   def followings
-    @user - User.find(params[:id])
+    @user = User.find(params[:id])
     @followings = @user.followings.page(params[:page])
-    counts(user)
+    counts(@user)
   end 
   
   def followers
     @user = User.find(params[:id])
     @followers = @user.followers.page(params[:page])
-    counts(user)
+    counts(@user)
   end
-　#Strong Paramter セキュリティのため
-　#name,email,password,password_confirmationを許可。
+  #Strong Paramter セキュリティのため
+  #name,email,password,password_confirmationを許可。
   private
   def user_params
     params.require(:user).permit(:name, :email, :password, :password_confirmation)
