@@ -25,6 +25,7 @@
              <ul class="dropdown-menu">
                <!--dropdown-menuを実装しその中にMy ProfileリンクとLogoutリンクを実装-->
                <li><%= link_to 'My profile',user_path(current_user) %></li>
+               <li><%= link_to 'My likes',likes_user_path(current_user)%></li>
                <li role="separator" class="divider"></li>
                <li><%= link_to 'Logout', logout_path, method: :delete %></li>
              </ul>
