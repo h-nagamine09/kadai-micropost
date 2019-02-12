@@ -1,6 +1,6 @@
 class UsersController < ApplicationController
   # 事前に実行される処理
- before_action :require_user_logged_in,only: [:index, :show, :followings, :followers]
+ before_action :require_user_logged_in,only: [:index, :show, :followings, :followers, :likes]
  
   def index
     #.allでDB一覧を取得全ユーザー一覧 ページネーションを適用させるために.page(params[:page])をつけてる
@@ -32,18 +32,26 @@ class UsersController < ApplicationController
       render :new
     end
   end
-  
+  # フォローイング一覧を取得
   def followings
     @user = User.find(params[:id])
     @followings = @user.followings.page(params[:page])
     counts(@user)
   end 
-  
+  # フォロワー一覧を取得
   def followers
     @user = User.find(params[:id])
     @followers = @user.followers.page(params[:page])
     counts(@user)
   end
+  
+  # お気に入り登録しているMicropost一覧を取得
+  def likes
+     @user = User.find(params[:id])
+     @likes = @user.likes.page(params[:page])
+    counts(@user)
+  end 
+  
   #Strong Paramter セキュリティのため
   #name,email,password,password_confirmationを許可。
   private

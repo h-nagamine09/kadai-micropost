@@ -5,7 +5,7 @@ class ToppagesController < ApplicationController
       #form_for用 @micropostにカラのインスタンスを代入
       @micropost = current_user.microposts.build
       # 一覧用
-      @microposts = current_user.microposts.order('created_at DESC').page(params[:page])
+      @microposts = current_user.feed_microposts.order('created_at DESC').page(params[:page])
     end
   end
 end
