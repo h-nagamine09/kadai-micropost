@@ -55,6 +55,7 @@ class UsersController < ApplicationController
   #Strong Paramter セキュリティのため
   #name,email,password,password_confirmationを許可。
   private
+  
   def user_params
     params.require(:user).permit(:name, :email, :password, :password_confirmation)
   end 

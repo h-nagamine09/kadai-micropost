@@ -22,12 +22,12 @@
     <!--パスワードの入力欄-->
     <div class="form-group">
       <%= f.label :password,'Password' %>
-      <%= f.text_field :password,class: 'form-control' %>
+      <%= f.password_field :password,class: 'form-control' %>
     </div>
     <!--パスワードの再入力欄-->
     <div class="form-group">
       <%= f.label :password_confirmation,'Confirmation' %>
-      <%= f.text_field :password_confirmation,class: 'form-control' %>
+      <%= f.password_field :password_confirmation,class: 'form-control' %>
     </div>
     <!--ボタン-->
     <%= f.submit 'sign up',class: 'btn btn-primary btn-block' %>
