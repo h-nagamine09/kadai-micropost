@@ -6,10 +6,10 @@
      <!--投稿ページ :contentの値を取得-->
      <%= form_for(@micropost) do |f| %>
      <div class="form-group">
-       <%= f.text_area :content, class: 'form_control', rows: 5 %>
+       <%= f.text_area :content, class: 'form-control', rows: 5 %>
      </div>
      <!--投稿ボタン-->
-     <%= f.submit 'Post',class:'btn btn-primary brn-block' %>
+     <%= f.submit 'Post',class:'btn btn-primary btn-block' %>
      <% end %>
    </aside>
    <div class="col-xs-8">
